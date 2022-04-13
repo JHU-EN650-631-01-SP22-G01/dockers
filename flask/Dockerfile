@@ -7,7 +7,7 @@ COPY --chown=flask-user:flask-user .env server
 WORKDIR /home/flask-user/server/
 
 ENV PATH="/home/flask-user/.local/bin:${PATH}"
-RUN git checkout fire && git pull\
+RUN git checkout ${GIT_BRANCH} && git pull\
     && pip install --user --upgrade pip \
     && pip install --user gunicorn \
     && pip install --user -r requirement.txt
