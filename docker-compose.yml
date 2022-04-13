@@ -1,0 +1,14 @@
+version: '3'
+services: 
+  flask:
+    build: ./flask
+    ports: 
+      - "5001:5000"
+  apache:
+    build: ./apache
+    links: 
+      - flask
+    ports:
+      - "8080:80"
+    extra_hosts:
+      - "host.docker:host-gateway"
