@@ -16,20 +16,27 @@
 ```sh
 $ brew install --cask docker-ce
 ```
- 
-
-如果是CentOS 请使用 
-```sh 
-$ sudo yum install docker
-```
 
 如果是UbuntuOS 请使用
 ```sh 
-$ sudo apt install docker
-```
-#### 2.2 官方文档
+$ sudo apt-get update
+$ sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
 
-您可以按照此教程安装[Docker安装教程](https://docs.docker.com/desktop/#download-and-install)
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+$ echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+$ sudo apt-get update
+$ sudo apt-get install docker-ce docker-ce-cli containerd.io
+```
+
+#### 2.2 官方文档(推荐)
+
+您可以按照此教程安装[Docker安装教程](https://docs.docker.com/get-docker/)
 
 ### 3. 安装Docker-Compose
 
@@ -40,7 +47,7 @@ $ sudo apt install docker
 $ pip3 install docker-compose 
 ```
 
-#### 3.2 官方文档
+#### 3.2 官方文档（推荐）
 
 您可以按照此教程安装[Docker-Compose安装教程](https://docs.docker.com/compose/install/)
 
