@@ -12,22 +12,26 @@
 
 请使用如下指令下载部署仓库
 ```
-$ git clone https://github.com/SciQuestDevelopment/deployment.git server
+$ git clone git@github.com:JHU-EN650-631-01-SP22-G01/dockers.git dockers
 ```
 
 当您完成下载后请进入对于路径
 ```bash 
-$ cd server
+$ cd docker
 ```
 
 
-#### 2. 部署MYSQL
+#### 2. 部署MYSQL(可选)
+
+##### 2.1 默认部署
 
 您可以使用以下指令启动MYSQL
 
 ```bash 
 docker-compose up -d mysql
 ```
+
+##### 2.1 自定义部署
 
 当mysql成功运行后您需要给mysql服务器的root账户分配远程访问权限, 请使用如下指令进入mysql服务器client
 ```sh
@@ -36,7 +40,7 @@ $ docker exec -it deployment_flask_1 sh
 当加入mysql container后, 可以直接运行mysql client 然后分配权限, 请使用以下指令进入mysql client
 
 ```sh
-$ mysql -uroot -pSciquest12345
+$ mysql -uroot -p12345
 ```
 
 当进入mysql client后请输入如下指令分配远程访问权限
@@ -62,7 +66,9 @@ $ docker ps
 
 如果成功将会看到一个名为`deployment_mysql_1`的容器
 
-#### 4. 部署Flask
+#### 3. 部署Flask
+
+##### 3.1 默认部署
 
 直接使用以下指令部署 Flask
 ```bash 
@@ -76,16 +82,23 @@ $ docker ps
 
 如果成功将会看到一个名为`deployment_flask_1`的容器
 
-#### 4. 部署Nginx
+##### 3.2 自定义部署
 
-直接使用以下指令部署 Nginx
-```bash 
-docker-compose up -d nginx
+Section4.1 为配置默认配置，使用main branch中的代码进行部署。 如果需要修改不同的branch请设置环境变量`GIT_BRANCH`, 您可以使用如下指令： 
+```sh
+$ export GIT_BRANCH=???
 ```
-请使用以下指令检查是否成功运行 nginx 服务器
+
+#### 5. 部署apache（在开发过程中暂时不需要）
+
+直接使用以下指令部署 Apache
+```bash 
+docker-compose up -d apache
+```
+请使用以下指令检查是否成功运行 apache 服务器
 
 ```sh
 $ docker ps 
 ```
 
-如果成功将会看到一个名为`deployment_nginx_1`的容器
+如果成功将会看到一个名为`deployment_apache_1`的容器
