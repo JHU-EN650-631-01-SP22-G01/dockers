@@ -5,13 +5,6 @@ services:
     ports: 
       - "5001:5000"
     environment:
-      - GIT_BRANCH=VictorLZA-1
-  biology:
-    build: ./biology
-    ports: 
-      - "5002:5000"
-    environment:
-      - GIT_BRANCH=development
   apache:
     build: ./apache
     ports:
