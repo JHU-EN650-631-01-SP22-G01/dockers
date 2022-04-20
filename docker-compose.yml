@@ -1,13 +1,26 @@
 version: '3'
 services: 
   arsenal:
-    build: ./arsenal
+    build: 
+      context: ./flask
+      args: 
+        - GIT_BRANCH=arsenal
     ports: 
       - "5001:5000"
-    environment:
+  large_mecha:
+    build: 
+      context: ./flask
+      args: 
+        - GIT_BRANCH=large_mecha
+    ports: 
+      - "5002:5000"
   apache:
     build: ./apache
     ports:
       - "8080:80"
     extra_hosts:
       - "host.docker:host-gateway"
+  mysql: 
+    build: ./mysql 
+    ports: 
+      - "3306:3306"
