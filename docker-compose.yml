@@ -14,13 +14,38 @@ services:
         - GIT_BRANCH=large_mecha
     ports: 
       - "5002:5000"
+    extra_hosts:
+      - "host.docker:host-gateway"
+  mental:
+    build: 
+      context: ./flask
+      args: 
+        - GIT_BRANCH=scarlett
+    ports: 
+      - "5003:5000"
+  heavy:
+    build: 
+      context: ./flask
+      args: 
+        - GIT_BRANCH=wyf
+    ports: 
+      - "5004:5000"
   apache:
     build: ./apache
     ports:
       - "8080:80"
     extra_hosts:
       - "host.docker:host-gateway"
-  mysql: 
-    build: ./mysql 
-    ports: 
-      - "3306:3306"
+  database:
+    build: ./mysql
+    ports:
+        - "33060:3306"
+    command: --init-file /data/application/init.sql
+    volumes:
+        - ./mysql/init.sql:/data/application/init.sql
+    environment:
+        MYSQL_ROOT_USER: root
+        MYSQL_ROOT_PASSWORD: secret
+        MYSQL_DATABASE: G01
+        MYSQL_USER: flask-user
+        MYSQL_PASSWORD: use-mysql
