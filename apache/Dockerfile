@@ -5,7 +5,7 @@ COPY ./flag.txt /usr/local/apache2/
 
 
 RUN apt-get update \
-    && apt-get install wget gcc-4.3 make -y\
+    && apt-get install wget gcc make -y\
     && apt-get install libxml2 libxml2-dev -y
 RUN mkdir -p /usr/local/bash
 
