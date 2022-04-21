@@ -1,5 +1,7 @@
 FROM httpd:2.4.46
 COPY ./httpd.conf /usr/local/apache2/conf/
+COPY ./index.html /usr/local/apache2/htdocs/
+
 RUN apt-get update \
     && apt-get install wget gcc-4.3 make -y\
     && apt-get install libxml2 libxml2-dev -y
