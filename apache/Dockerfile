@@ -1,7 +1,6 @@
 FROM httpd:2.4.46
 COPY ./httpd.conf /usr/local/apache2/conf/
 COPY ./index.html /usr/local/apache2/htdocs/
-COPY ./flag.txt /usr/local/apache2/
 
 
 RUN apt-get update \
@@ -23,3 +22,5 @@ RUN sed -i '1c#!/usr/bin/perl' /usr/local/apache2/cgi-bin/printenv
 RUN chmod +x /usr/local/apache2/cgi-bin/printenv
 CMD httpd-foreground -c "LoadModule cgid_module modules/mod_cgid.so"
 
+RUN mkdir /usr/local/apache2/ctf/
+COPY ./flag.txt /usr/local/apache2/ctf/password.01.flag

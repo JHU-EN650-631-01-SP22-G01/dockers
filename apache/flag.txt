@@ -1,1 +1,3 @@
-Flag: fasreqwheqwgfeqih4231hfjkafdif324
+CTF-Flag: f8042c52fa5d97160a4c7f644740d30e
+
+<!-- THIS LOOKS LIKE A PASSWORD OF SOMEONEELSE  -->
