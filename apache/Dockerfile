@@ -17,9 +17,6 @@ RUN ./configure && make && make install
 WORKDIR /usr/local/apache2
 COPY ./links-status.cgi /usr/local/apache2/cgi-bin/links-status
 RUN chmod +x /usr/local/apache2/cgi-bin/links-status
-
-RUN sed -i '1c#!/usr/bin/perl' /usr/local/apache2/cgi-bin/printenv
-RUN chmod +x /usr/local/apache2/cgi-bin/printenv
 CMD httpd-foreground -c "LoadModule cgid_module modules/mod_cgid.so"
 
 RUN mkdir /usr/local/apache2/ctf/
